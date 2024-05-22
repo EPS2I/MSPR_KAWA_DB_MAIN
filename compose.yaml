@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  msp-kawa-db:
+    image: msp-kawa-db
+    container_name: msp-kawa-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - "8077:8077"
+    depends_on:
+      - postgresql
+
+  postgresql:
+    image: postgresql
+    container_name: postgresql
+    ports:
+      - "5432:5432"
