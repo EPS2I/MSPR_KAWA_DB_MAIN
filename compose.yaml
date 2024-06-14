@@ -1,6 +1,18 @@
 version: '3.8'
 services:
 
+  mspr-kawa-db:
+    image: mspr-kawa-db
+    container_name: mspr-kawa-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - "8077:8077"
+    networks:
+      - mspr-kawa-network
+    depends_on:
+      - mspr-kawa-postgresql
+
   postgresql:
     build: ./db_main/.
     image: postgresql
